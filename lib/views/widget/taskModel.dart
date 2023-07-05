@@ -1,18 +1,13 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart';
 
 //import widgets
 import 'package:grow_app/views/widget/dialogWidget.dart';
 
 //import constants
-import 'package:grow_app/constants/colors.dart';
-import 'package:grow_app/constants/fonts.dart';
-import 'package:grow_app/constants/images.dart';
-import 'package:grow_app/constants/icons.dart';
-import 'package:grow_app/constants/others.dart';
 
 //import firebase
-import 'package:cloud_firestore/cloud_firestore.dart';
+
 import 'package:firebase_auth/firebase_auth.dart';
 
 //import others
@@ -58,7 +53,6 @@ class _taskModelScreenState extends State<taskModelScreen> {
             title: isUpdate ? Text("Update Todo") : Text("Add Todo"),
             content: Form(
               key: formkey,
-              autovalidate: true,
               child: TextFormField(
                 autofocus: true,
                 decoration: InputDecoration(
@@ -78,39 +72,39 @@ class _taskModelScreenState extends State<taskModelScreen> {
               ),
             ),
             actions: <Widget>[
-              RaisedButton(
-                color: Colors.purple,
-                onPressed: () {
-                  if (formkey.currentState!.validate()) {
-                    formkey.currentState!.save();
-                    if (isUpdate) {
-                      taskcollections
-                          .doc(uid)
-                          .collection('task')
-                          // .doc(ds.documentID)
-                          .doc(ds?.id)
-                          .update({
-                        'task': task,
-                        'time': DateTime.now(),
-                      });
-                    } else {
-                      //  insert
-                      taskcollections.doc(uid).collection('task').add({
-                        'task': task,
-                        'time': DateTime.now(),
-                      });
-                    }
-                    Navigator.pop(context);
-                  }
-                },
-                child: Text(
-                  "Add",
-                  style: TextStyle(
-                    fontFamily: "tepeno",
-                    color: Colors.white,
-                  ),
-                ),
-              ),
+              // RaisedButton(
+              //   color: Colors.purple,
+              //   onPressed: () {
+              //     if (formkey.currentState!.validate()) {
+              //       formkey.currentState!.save();
+              //       if (isUpdate) {
+              //         taskcollections
+              //             .doc(uid)
+              //             .collection('task')
+              //             // .doc(ds.documentID)
+              //             .doc(ds?.id)
+              //             .update({
+              //           'task': task,
+              //           'time': DateTime.now(),
+              //         });
+              //       } else {
+              //         //  insert
+              //         taskcollections.doc(uid).collection('task').add({
+              //           'task': task,
+              //           'time': DateTime.now(),
+              //         });
+              //       }
+              //       Navigator.pop(context);
+              //     }
+              //   },
+              //   child: Text(
+              //     "Add",
+              //     style: TextStyle(
+              //       fontFamily: "tepeno",
+              //       color: Colors.white,
+              //     ),
+              //   ),
+              // ),
             ],
           );
         });

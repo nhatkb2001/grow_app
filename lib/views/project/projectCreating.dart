@@ -1,25 +1,18 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart';
 
 //import constants
 import 'package:grow_app/constants/colors.dart';
-import 'package:grow_app/constants/fonts.dart';
 import 'package:grow_app/constants/images.dart';
-import 'package:grow_app/constants/icons.dart';
-import 'package:grow_app/constants/others.dart';
 import 'package:grow_app/models/notificationModel.dart';
 import 'package:grow_app/models/projectModel.dart';
 import 'package:overlay_support/overlay_support.dart';
 import 'package:grow_app/models/userModel.dart';
 import 'package:grow_app/views/project/userSearching.dart';
-import 'package:firebase_messaging/firebase_messaging.dart';
 
 //import widgets
-import 'package:grow_app/views/widget/dialogWidget.dart';
 
 //import views
-import 'package:grow_app/views/project/projectManagement.dart';
 
 //import firebase
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -100,50 +93,11 @@ class _projectCreatingScreenState extends State<projectCreatingScreen> {
 
   var taskcollections = FirebaseFirestore.instance.collection('users');
 
-  late final FirebaseMessaging _messaging;
   late final PushNotification _notificationInfo;
 
   void registerNotification() async {
     // 1. Initialize the Firebase app
     await Firebase.initializeApp();
-
-    // 2. Instantiate Firebase Messaging
-    _messaging = FirebaseMessaging.instance;
-
-    // 3. On iOS, this helps to take the user permissions
-    NotificationSettings settings = await _messaging.requestPermission(
-      alert: true,
-      badge: true,
-      provisional: false,
-      sound: true,
-    );
-
-    if (settings.authorizationStatus == AuthorizationStatus.authorized) {
-      print('User granted permission');
-      // TODO: handle the received notifications
-      FirebaseMessaging.onMessage.listen((RemoteMessage message) {
-        // Parse the message received
-        PushNotification notification = PushNotification(
-          title: message.notification?.title,
-          body: message.notification?.body,
-        );
-
-        setState(() {
-          _notificationInfo = notification;
-        });
-        if (_notificationInfo != null) {
-          // For displaying the notification as an overlay
-          showSimpleNotification(
-            Text(_notificationInfo.title!),
-            subtitle: Text(_notificationInfo.body!),
-            background: Colors.cyan.shade700,
-            duration: Duration(seconds: 2),
-          );
-        }
-      });
-    } else {
-      print('User declined or has not accepted permission');
-    }
   }
 
   Future createProject(String newProjectId) async {
@@ -205,7 +159,6 @@ class _projectCreatingScreenState extends State<projectCreatingScreen> {
         print("userListChoice");
         print(userListChoice);
       });
-      setState(() {});
     });
   }
 
@@ -219,7 +172,6 @@ class _projectCreatingScreenState extends State<projectCreatingScreen> {
         users = UserModel.fromDocument(value.docs.first.data());
         userListChoice.add(users);
         assigned.add(users.userId);
-        print(assigned);
       });
     });
   }
@@ -278,8 +230,6 @@ class _projectCreatingScreenState extends State<projectCreatingScreen> {
     uid = userid!;
     print('The current uid is $uid');
     getUserDetail();
-
-    // getAssigned();
   }
 
   @override
@@ -515,21 +465,21 @@ class _projectCreatingScreenState extends State<projectCreatingScreen> {
                                       alignment: Alignment.centerLeft,
                                       child: GestureDetector(
                                         onTap: () async {
-                                          String category = "task";
-                                          DateTime? dt = await datePickerDialog(
-                                              context, selectDate, category);
-                                          if (dt != null) {
-                                            selectDate = dt;
-                                            setState(() {
-                                              haveDeadline = true;
-                                              haveDeadline != haveDeadline;
-                                              selectDate != selectDate;
-                                              newDeadline =
-                                                  "${DateFormat('yMMMMd').format(selectDate)}";
-                                            });
-                                          }
-                                          print(haveDeadline);
-                                          print(selectDate);
+                                          // String category = "task";
+                                          // DateTime? dt = await datePickerDialog(
+                                          //     context, selectDate, category);
+                                          // if (dt != null) {
+                                          //   selectDate = dt;
+                                          //   setState(() {
+                                          //     haveDeadline = true;
+                                          //     haveDeadline != haveDeadline;
+                                          //     selectDate != selectDate;
+                                          //     newDeadline =
+                                          //         "${DateFormat('yMMMMd').format(selectDate)}";
+                                          //   });
+                                          // }
+                                          // print(haveDeadline);
+                                          // print(selectDate);
                                         },
                                         child: AnimatedContainer(
                                             alignment: Alignment.center,

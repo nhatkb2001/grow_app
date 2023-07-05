@@ -1,10 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:grow_app/models/userModel.dart';
-import 'package:grow_app/views/project/projectDetail.dart';
-import 'package:grow_app/views/project/projectManagement.dart';
 
 //import views
 import 'package:grow_app/views/wrapper/authenticationWrapper.dart';
@@ -14,14 +10,9 @@ import 'package:grow_app/controllers/authController.dart';
 
 //import constants
 import 'package:grow_app/constants/colors.dart';
-import 'package:grow_app/constants/fonts.dart';
-import 'package:grow_app/constants/images.dart';
-import 'package:grow_app/constants/icons.dart';
-import 'package:grow_app/constants/others.dart';
 import 'package:iconsax/iconsax.dart';
 
 //import others
-import 'package:flutter_rounded_date_picker/flutter_rounded_date_picker.dart';
 
 TextEditingController searchController = TextEditingController();
 
@@ -35,7 +26,6 @@ logoutDialog(BuildContext mContext) {
             ),
             backgroundColor: white,
             content: Stack(
-              overflow: Overflow.visible,
               alignment: Alignment.topCenter,
               children: [
                 Container(
@@ -436,145 +426,145 @@ addAssigneeDialog(BuildContext mContext, List<UserModel> userListChoice) {
       });
 }
 
-datePickerDialog(BuildContext context, selectDate, category) {
-  return showRoundedDatePicker(
-      // customWeekDays: ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"],
-      height: 320,
-      context: context,
-      fontFamily: "Poppins",
-      theme: ThemeData(primarySwatch: Colors.deepPurple),
-      // listDateDisabled: [
-      //   DateTime.now().add(Duration(days: 1)),
-      //   DateTime.now().add(Duration(days: 4)),
-      //   DateTime.now().add(Duration(days: 6)),
-      //   DateTime.now().add(Duration(days: 8)),
-      //   DateTime.now().add(Duration(days: 10)),
-      // ],
-      initialDate: selectDate,
-      // initialDate: DateTime(2022, 12, 17),
-      firstDate: DateTime(1900),
-      lastDate: (category == "dob") ? DateTime.now() : DateTime(2050),
-      // onTapActionButton:() {
-      //   if()
-      // },
+// datePickerDialog(BuildContext context, selectDate, category) {
+//   return showRoundedDatePicker(
+//       // customWeekDays: ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"],
+//       height: 320,
+//       context: context,
+//       fontFamily: "Poppins",
+//       theme: ThemeData(primarySwatch: Colors.deepPurple),
+//       // listDateDisabled: [
+//       //   DateTime.now().add(Duration(days: 1)),
+//       //   DateTime.now().add(Duration(days: 4)),
+//       //   DateTime.now().add(Duration(days: 6)),
+//       //   DateTime.now().add(Duration(days: 8)),
+//       //   DateTime.now().add(Duration(days: 10)),
+//       // ],
+//       initialDate: selectDate,
+//       // initialDate: DateTime(2022, 12, 17),
+//       firstDate: DateTime(1900),
+//       lastDate: (category == "dob") ? DateTime.now() : DateTime(2050),
+//       // onTapActionButton:() {
+//       //   if()
+//       // },
 
-      styleDatePicker: MaterialRoundedDatePickerStyle(
-        //Section 1
-        paddingDateYearHeader: EdgeInsets.all(8),
-        backgroundHeader: purpleDark,
-        textStyleDayButton: TextStyle(
-            fontFamily: "Poppins",
-            fontSize: 16,
-            color: white,
-            fontWeight: FontWeight.w500,
-            height: 1.0),
-        textStyleYearButton: TextStyle(
-          fontFamily: "Poppins",
-          fontSize: 24,
-          color: white,
-          fontWeight: FontWeight.w500,
-        ),
+//       styleDatePicker: MaterialRoundedDatePickerStyle(
+//         //Section 1
+//         paddingDateYearHeader: EdgeInsets.all(8),
+//         backgroundHeader: purpleDark,
+//         textStyleDayButton: TextStyle(
+//             fontFamily: "Poppins",
+//             fontSize: 16,
+//             color: white,
+//             fontWeight: FontWeight.w500,
+//             height: 1.0),
+//         textStyleYearButton: TextStyle(
+//           fontFamily: "Poppins",
+//           fontSize: 24,
+//           color: white,
+//           fontWeight: FontWeight.w500,
+//         ),
 
-        //Section 2
-        textStyleMonthYearHeader: TextStyle(
-          fontFamily: "Poppins",
-          fontSize: 16,
-          color: white,
-          fontWeight: FontWeight.w600,
-        ),
-        backgroundHeaderMonth: Colors.deepPurple[400],
-        paddingMonthHeader: EdgeInsets.only(top: 12, bottom: 12),
-        sizeArrow: 24,
-        colorArrowNext: white,
-        colorArrowPrevious: white,
-        // marginLeftArrowPrevious: 8,
-        // marginTopArrowPrevious: 0,
-        // marginTopArrowNext: 0,
-        // marginRightArrowNext: 8,
+//         //Section 2
+//         textStyleMonthYearHeader: TextStyle(
+//           fontFamily: "Poppins",
+//           fontSize: 16,
+//           color: white,
+//           fontWeight: FontWeight.w600,
+//         ),
+//         backgroundHeaderMonth: Colors.deepPurple[400],
+//         paddingMonthHeader: EdgeInsets.only(top: 12, bottom: 12),
+//         sizeArrow: 24,
+//         colorArrowNext: white,
+//         colorArrowPrevious: white,
+//         // marginLeftArrowPrevious: 8,
+//         // marginTopArrowPrevious: 0,
+//         // marginTopArrowNext: 0,
+//         // marginRightArrowNext: 8,
 
-        //Section 3
-        paddingDatePicker: EdgeInsets.all(0),
-        backgroundPicker: Colors.deepPurple[300],
-        textStyleDayHeader: TextStyle(
-          fontFamily: "Poppins",
-          fontSize: 16,
-          color: white,
-          fontWeight: FontWeight.w600,
-        ),
-        textStyleDayOnCalendar: TextStyle(
-          fontFamily: "Poppins",
-          fontSize: 16,
-          color: white,
-          fontWeight: FontWeight.w400,
-        ),
-        textStyleDayOnCalendarSelected: TextStyle(
-          fontFamily: "Poppins",
-          fontSize: 16,
-          color: white,
-          fontWeight: FontWeight.w600,
-        ),
+//         //Section 3
+//         paddingDatePicker: EdgeInsets.all(0),
+//         backgroundPicker: Colors.deepPurple[300],
+//         textStyleDayHeader: TextStyle(
+//           fontFamily: "Poppins",
+//           fontSize: 16,
+//           color: white,
+//           fontWeight: FontWeight.w600,
+//         ),
+//         textStyleDayOnCalendar: TextStyle(
+//           fontFamily: "Poppins",
+//           fontSize: 16,
+//           color: white,
+//           fontWeight: FontWeight.w400,
+//         ),
+//         textStyleDayOnCalendarSelected: TextStyle(
+//           fontFamily: "Poppins",
+//           fontSize: 16,
+//           color: white,
+//           fontWeight: FontWeight.w600,
+//         ),
 
-        decorationDateSelected: BoxDecoration(
-          color: purpleMain,
-          shape: BoxShape.rectangle,
-          borderRadius: BorderRadius.circular(8),
-          boxShadow: [
-            BoxShadow(
-              color: black.withOpacity(0.10),
-              spreadRadius: 0,
-              blurRadius: 4,
-              offset: Offset(0, 4),
-            ),
-          ],
-        ),
+//         decorationDateSelected: BoxDecoration(
+//           color: purpleMain,
+//           shape: BoxShape.rectangle,
+//           borderRadius: BorderRadius.circular(8),
+//           boxShadow: [
+//             BoxShadow(
+//               color: black.withOpacity(0.10),
+//               spreadRadius: 0,
+//               blurRadius: 4,
+//               offset: Offset(0, 4),
+//             ),
+//           ],
+//         ),
 
-        textStyleDayOnCalendarDisabled:
-            TextStyle(fontSize: 20, color: white.withOpacity(0.1)),
+//         textStyleDayOnCalendarDisabled:
+//             TextStyle(fontSize: 20, color: white.withOpacity(0.1)),
 
-        textStyleCurrentDayOnCalendar: TextStyle(
-          fontFamily: "Poppins",
-          fontSize: 20,
-          color: purpleMain,
-          fontWeight: FontWeight.w700,
-        ),
+//         textStyleCurrentDayOnCalendar: TextStyle(
+//           fontFamily: "Poppins",
+//           fontSize: 20,
+//           color: purpleMain,
+//           fontWeight: FontWeight.w700,
+//         ),
 
-        //Section 4
-        paddingActionBar: EdgeInsets.all(8),
-        backgroundActionBar: Colors.deepPurple[300],
-        textStyleButtonAction: TextStyle(
-          fontFamily: "Poppins",
-          fontSize: 16,
-          color: white,
-          fontWeight: FontWeight.w600,
-        ),
-        textStyleButtonPositive: TextStyle(
-          fontFamily: "Poppins",
-          fontSize: 16,
-          color: white,
-          fontWeight: FontWeight.w600,
-        ),
-        textStyleButtonNegative: TextStyle(
-          fontFamily: "Poppins",
-          fontSize: 16,
-          color: white,
-          fontWeight: FontWeight.w600,
-        ),
-      ),
-      styleYearPicker: MaterialRoundedYearPickerStyle(
-        textStyleYear: TextStyle(
-            fontFamily: "Poppins",
-            fontSize: 24,
-            color: Colors.white,
-            fontWeight: FontWeight.w400),
-        textStyleYearSelected: TextStyle(
-            fontFamily: "Poppins",
-            fontSize: 48,
-            color: Colors.white,
-            fontWeight: FontWeight.w600),
-        heightYearRow: 80,
-        backgroundPicker: Colors.deepPurple[400],
-      ));
-}
+//         //Section 4
+//         paddingActionBar: EdgeInsets.all(8),
+//         backgroundActionBar: Colors.deepPurple[300],
+//         textStyleButtonAction: TextStyle(
+//           fontFamily: "Poppins",
+//           fontSize: 16,
+//           color: white,
+//           fontWeight: FontWeight.w600,
+//         ),
+//         textStyleButtonPositive: TextStyle(
+//           fontFamily: "Poppins",
+//           fontSize: 16,
+//           color: white,
+//           fontWeight: FontWeight.w600,
+//         ),
+//         textStyleButtonNegative: TextStyle(
+//           fontFamily: "Poppins",
+//           fontSize: 16,
+//           color: white,
+//           fontWeight: FontWeight.w600,
+//         ),
+//       ),
+//       styleYearPicker: MaterialRoundedYearPickerStyle(
+//         textStyleYear: TextStyle(
+//             fontFamily: "Poppins",
+//             fontSize: 24,
+//             color: Colors.white,
+//             fontWeight: FontWeight.w400),
+//         textStyleYearSelected: TextStyle(
+//             fontFamily: "Poppins",
+//             fontSize: 48,
+//             color: Colors.white,
+//             fontWeight: FontWeight.w600),
+//         heightYearRow: 80,
+//         backgroundPicker: Colors.deepPurple[400],
+//       ));
+// }
 
 removeProjectDialog(BuildContext mContext, String projectId, String userId,
     List assigned, List taskList) {
@@ -587,7 +577,6 @@ removeProjectDialog(BuildContext mContext, String projectId, String userId,
             ),
             backgroundColor: white,
             content: Stack(
-              overflow: Overflow.visible,
               alignment: Alignment.topCenter,
               children: [
                 Container(
@@ -774,7 +763,6 @@ removeTaskDialog(BuildContext mContext, String taskId, String userId,
             ),
             backgroundColor: white,
             content: Stack(
-              overflow: Overflow.visible,
               alignment: Alignment.topCenter,
               children: [
                 Container(

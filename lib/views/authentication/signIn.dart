@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart';
 
 //import views
 import 'package:grow_app/views/authentication/signUp.dart';
@@ -9,7 +8,6 @@ import 'package:grow_app/views/authentication/recoveryPassword.dart';
 import 'package:grow_app/controllers/authController.dart';
 
 //import firebase
-import 'package:firebase_auth/firebase_auth.dart';
 
 // //import provider - state management
 // import 'package:provider/provider.dart';
@@ -19,7 +17,6 @@ import 'package:grow_app/constants/colors.dart';
 import 'package:grow_app/constants/fonts.dart';
 import 'package:grow_app/constants/images.dart';
 import 'package:grow_app/constants/icons.dart';
-import 'package:grow_app/constants/others.dart';
 
 //import others
 import 'package:flutter/services.dart';
@@ -33,36 +30,11 @@ class signinScreen extends StatefulWidget {
 class _SignInPageState extends State<signinScreen> {
   bool isHiddenPassword = true;
 
-  // final formKey = new GlobalKey<FormState>();
-
-  // final emailController = TextEditingController();
-
-  // final passwordController = TextEditingController();
-
-  // // final authService = Provider.of<AuthService>(context);
-
-  // late String email, password;
-
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
   late String email, password, userid;
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
-
-  // void login() {
-  //   if (formKey.currentState!.validate()) {
-  //     formKey.currentState!.save();
-  //     signin(email, password, context).then((value) {
-  //       if (value != null) {
-  //         Navigator.pushReplacement(
-  //             context,
-  //             MaterialPageRoute(
-  //               builder: (context) => TasksPage(required, uid: value.uid),
-  //             ));
-  //       }
-  //     });
-  //   }
-  // }
 
   @override
   Widget build(BuildContext context) {
@@ -273,7 +245,8 @@ class _SignInPageState extends State<signinScreen> {
                               padding: EdgeInsets.only(top: 24),
                               alignment: Alignment.center,
                               child: GestureDetector(
-                                onTap: () => loginUser(emailController.text, passwordController.text, context),
+                                onTap: () => loginUser(emailController.text,
+                                    passwordController.text, context),
                                 // onTap: () => login(),
                                 child: AnimatedContainer(
                                   alignment: Alignment.center,
@@ -307,8 +280,7 @@ class _SignInPageState extends State<signinScreen> {
                                         fontSize: textButton),
                                   ),
                                 ),
-                              )
-                          )
+                              ))
                         ]),
                         SizedBox(height: 16),
                         Container(
@@ -318,10 +290,8 @@ class _SignInPageState extends State<signinScreen> {
                               style: TextStyle(
                                   fontFamily: 'Poppins',
                                   color: greyLight,
-                                  fontSize: suggestion12
-                              ),
-                            )
-                        ),
+                                  fontSize: suggestion12),
+                            )),
                         SizedBox(height: 8),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,

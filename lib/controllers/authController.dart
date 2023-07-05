@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart';
 
 //import views
 import 'package:grow_app/views/authentication/checkinEmail.dart';
@@ -13,11 +12,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 //import login method
-import 'package:google_sign_in/google_sign_in.dart';
-import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 
 //import others
-import 'dart:math';
 
 FirebaseAuth auth = FirebaseAuth.instance;
 // int randomNumber = Random().nextInt(9000) + 1000;
@@ -180,108 +176,108 @@ Future signOutUser() async {
   await FirebaseAuth.instance
       .signOut()
       .then((value) => {print("successfully signout!")});
-  await FacebookAuth.instance.logOut();
-  final User? user = await auth.currentUser;
+
+  final User? user = auth.currentUser;
   final uid = user?.uid;
   // print("Your current id is $uid");
 }
 
 Future googleSignIn(context) async {
-  try {
-    final googleMethod = await GoogleSignIn().signIn();
-    final auth = await googleMethod!.authentication;
-    final cred = GoogleAuthProvider.credential(
-        idToken: auth.idToken, accessToken: auth.accessToken);
-    final UserCredential userCredential = await FirebaseAuth.instance
-        .signInWithCredential(cred)
-        .whenComplete(() {});
+  // try {
 
-    final User? googleUser = userCredential.user;
-    final uid = googleUser?.uid;
-    final GoogleSignInAccount? userData = googleMethod;
+  //   final auth = await googleMethod!.authentication;
+  //   final cred = GoogleAuthProvider.credential(
+  //       idToken: auth.idToken, accessToken: auth.accessToken);
+  //   final UserCredential userCredential = await FirebaseAuth.instance
+  //       .signInWithCredential(cred)
+  //       .whenComplete(() {});
 
-    print("Your current id is $uid");
-    print("Your current email is " + userData!.email.toString());
-    print("Your current photoUrl is " + userData.photoUrl.toString());
-    print("Your current displayName is " + userData.displayName.toString());
-    // print("Your current id is " + userData.id.toString());
+  //   final User? googleUser = userCredential.user;
+  //   final uid = googleUser?.uid;
+  //   final GoogleSignInAccount? userData = googleMethod;
 
-    if (userCredential.additionalUserInfo!.isNewUser) {
-      FirebaseFirestore.instance.collection("users").doc(uid).set({
-        'name': userData.displayName,
-        'email': userData.email,
-        "userId": uid,
-        'phonenumber': '',
-        'dob': '',
-        'avatar': userData.photoUrl,
-        'job': '',
-        'tasksList': FieldValue.arrayUnion([]),
-        'messagesList': FieldValue.arrayUnion([]),
-        'projectsList': FieldValue.arrayUnion([]),
-      }).then((signedInUser) => {
-            print("successfully registered!"),
-          });
-    }
-    if (uid != null) {
-      Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(
-              builder: (context) => navigationBar(required, uid: uid)));
-    }
-  } catch (e) {
-    print("error");
-  }
+  //   print("Your current id is $uid");
+  //   print("Your current email is " + userData!.email.toString());
+  //   print("Your current photoUrl is " + userData.photoUrl.toString());
+  //   print("Your current displayName is " + userData.displayName.toString());
+  //   // print("Your current id is " + userData.id.toString());
+
+  //   if (userCredential.additionalUserInfo!.isNewUser) {
+  //     FirebaseFirestore.instance.collection("users").doc(uid).set({
+  //       'name': userData.displayName,
+  //       'email': userData.email,
+  //       "userId": uid,
+  //       'phonenumber': '',
+  //       'dob': '',
+  //       'avatar': userData.photoUrl,
+  //       'job': '',
+  //       'tasksList': FieldValue.arrayUnion([]),
+  //       'messagesList': FieldValue.arrayUnion([]),
+  //       'projectsList': FieldValue.arrayUnion([]),
+  //     }).then((signedInUser) => {
+  //           print("successfully registered!"),
+  //         });
+  //   }
+  //   if (uid != null) {
+  //     Navigator.pushReplacement(
+  //         context,
+  //         MaterialPageRoute(
+  //             builder: (context) => navigationBar(required, uid: uid)));
+  //   }
+  // } catch (e) {
+  //   print("error");
+  // }
 }
 
 Future facebookSignIn(context) async {
-  try {
-    final facebookMethod = await FacebookAuth.instance
-        .login(permissions: ['public_profile', 'email']);
-    if (facebookMethod.status == LoginStatus.success) {
-      final cred =
-          FacebookAuthProvider.credential(facebookMethod.accessToken!.token);
-      final UserCredential userCredential = await FirebaseAuth.instance
-          .signInWithCredential(cred)
-          .whenComplete(() {});
+  // try {
+  //   final facebookMethod = await FacebookAuth.instance
+  //       .login(permissions: ['public_profile', 'email']);
+  //   if (facebookMethod.status == LoginStatus.success) {
+  //     final cred =
+  //         FacebookAuthProvider.credential(facebookMethod.accessToken!.token);
+  //     final UserCredential userCredential = await FirebaseAuth.instance
+  //         .signInWithCredential(cred)
+  //         .whenComplete(() {});
 
-      final User? facebookUser = userCredential.user;
-      final uid = facebookUser?.uid;
-      final userData = await FacebookAuth.instance.getUserData();
+  //     final User? facebookUser = userCredential.user;
+  //     final uid = facebookUser?.uid;
+  //     final userData = await FacebookAuth.instance.getUserData();
 
-      print("Your current id is $uid");
-      print("Your current userData is $userData");
-      print("Your current email is " + userData['email'].toString());
-      print("Your current photoUrl is " +
-          userData['picture']['data']['url'].toString());
-      print("Your current displayName is " + userData['name'].toString());
-      // print("Your current id is " + userData['id'].toString());
+  //     print("Your current id is $uid");
+  //     print("Your current userData is $userData");
+  //     print("Your current email is " + userData['email'].toString());
+  //     print("Your current photoUrl is " +
+  //         userData['picture']['data']['url'].toString());
+  //     print("Your current displayName is " + userData['name'].toString());
+  //     // print("Your current id is " + userData['id'].toString());
 
-      if (userCredential.additionalUserInfo!.isNewUser) {
-        FirebaseFirestore.instance.collection("users").doc(uid).set({
-          'name': userData['name'],
-          'email': userData['email'],
-          "userId": uid,
-          'phonenumber': '',
-          'dob': '',
-          'job': '',
-          'avatar': userData['picture']['data']['url'],
-          'tasksList': FieldValue.arrayUnion([]),
-          'messagesList': FieldValue.arrayUnion([]),
-          'projectsList': FieldValue.arrayUnion([]),
-        }).then((signedInUser) => {
-              print("successfully registered!"),
-            });
-      }
-      if (uid != null) {
-        Navigator.pushReplacement(
-            context,
-            MaterialPageRoute(
-                builder: (context) => navigationBar(required, uid: uid)));
-      }
-    }
-  } catch (e) {
-    print("error");
-  }
+  //     if (userCredential.additionalUserInfo!.isNewUser) {
+  //       FirebaseFirestore.instance.collection("users").doc(uid).set({
+  //         'name': userData['name'],
+  //         'email': userData['email'],
+  //         "userId": uid,
+  //         'phonenumber': '',
+  //         'dob': '',
+  //         'job': '',
+  //         'avatar': userData['picture']['data']['url'],
+  //         'tasksList': FieldValue.arrayUnion([]),
+  //         'messagesList': FieldValue.arrayUnion([]),
+  //         'projectsList': FieldValue.arrayUnion([]),
+  //       }).then((signedInUser) => {
+  //             print("successfully registered!"),
+  //           });
+  //     }
+  //     if (uid != null) {
+  //       Navigator.pushReplacement(
+  //           context,
+  //           MaterialPageRoute(
+  //               builder: (context) => navigationBar(required, uid: uid)));
+  //     }
+  //   }
+  // } catch (e) {
+  //   print("error");
+  // }
 }
 
 // Future<UserCredential> signInWithFacebook() async {

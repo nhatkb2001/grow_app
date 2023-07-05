@@ -10,10 +10,8 @@ import 'package:grow_app/controllers/authController.dart';
 
 //import firebase
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 
 //import provider - state management
-import 'package:provider/provider.dart';
 
 class authenticationWrapper extends StatefulWidget {
   @override

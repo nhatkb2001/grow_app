@@ -1,23 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart';
 
 //import constants
 import 'package:grow_app/constants/colors.dart';
-import 'package:grow_app/constants/fonts.dart';
 import 'package:grow_app/constants/images.dart';
-import 'package:grow_app/constants/icons.dart';
-import 'package:grow_app/constants/others.dart';
 import 'package:grow_app/models/projectModel.dart';
 import 'package:grow_app/models/userModel.dart';
-import 'package:grow_app/views/project/projectCenter.dart';
-import 'package:grow_app/views/project/userSearching.dart';
 import 'package:grow_app/views/task/assignTasks.dart';
 
 //import widgets
-import 'package:grow_app/views/widget/dialogWidget.dart';
 
 //import views
-import 'package:grow_app/views/project/projectManagement.dart';
 
 //import firebase
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -401,21 +393,21 @@ class _taskCreatingScreenState extends State<taskCreatingScreen> {
                                       alignment: Alignment.centerLeft,
                                       child: GestureDetector(
                                         onTap: () async {
-                                          String category = "task";
-                                          DateTime? dt = await datePickerDialog(
-                                              context, selectDate, category);
-                                          if (dt != null) {
-                                            selectDate = dt;
-                                            setState(() {
-                                              haveDeadline = true;
-                                              haveDeadline != haveDeadline;
-                                              selectDate != selectDate;
-                                              newDeadline =
-                                                  "${DateFormat('yMMMMd').format(selectDate)}";
-                                            });
-                                          }
-                                          print(haveDeadline);
-                                          print(selectDate);
+                                          // String category = "task";
+                                          // DateTime? dt = await datePickerDialog(
+                                          //     context, selectDate, category);
+                                          // if (dt != null) {
+                                          //   selectDate = dt;
+                                          //   setState(() {
+                                          //     haveDeadline = true;
+                                          //     haveDeadline != haveDeadline;
+                                          //     selectDate != selectDate;
+                                          //     newDeadline =
+                                          //         "${DateFormat('yMMMMd').format(selectDate)}";
+                                          //   });
+                                          // }
+                                          // print(haveDeadline);
+                                          // print(selectDate);
                                         },
                                         child: AnimatedContainer(
                                             alignment: Alignment.center,

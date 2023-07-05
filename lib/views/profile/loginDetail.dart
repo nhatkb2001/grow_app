@@ -1,21 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:grow_app/models/userModel.dart';
 
 //import widgets
-import 'package:grow_app/views/widget/dialogWidget.dart';
 
 //import constants
 import 'package:grow_app/constants/colors.dart';
-import 'package:grow_app/constants/fonts.dart';
 import 'package:grow_app/constants/images.dart';
-import 'package:grow_app/constants/icons.dart';
-import 'package:grow_app/constants/others.dart';
 
 //import views
-import 'package:grow_app/views/project/projectManagement.dart';
 import 'package:grow_app/views/profile/changingPassword.dart';
-import 'package:grow_app/views/profile/profileCenter.dart';
 
 //import firebase
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -25,7 +18,7 @@ import 'package:grow_app/views/widget/snackBarWidget.dart';
 //import others
 import 'package:meta/meta.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:flutter_rounded_date_picker/flutter_rounded_date_picker.dart';
+
 import 'package:intl/intl.dart';
 
 class loginDetailScreen extends StatefulWidget {
@@ -268,16 +261,16 @@ class loginDetailScreenState extends State<loginDetailScreen>
                                 alignment: Alignment.centerLeft,
                                 child: GestureDetector(
                                   onTap: () async {
-                                    String category = "dob";
-                                    DateTime? dt = await datePickerDialog(
-                                        context, selectDate, category);
-                                    if (dt != null) {
-                                      selectDate = dt;
-                                      setState(() {
-                                        selectDate != selectDate;
-                                      });
-                                    }
-                                    print(selectDate);
+                                    // String category = "dob";
+                                    // DateTime? dt = await datePickerDialog(
+                                    //     context, selectDate, category);
+                                    // if (dt != null) {
+                                    //   selectDate = dt;
+                                    //   setState(() {
+                                    //     selectDate != selectDate;
+                                    //   });
+                                    // }
+                                    // print(selectDate);
                                   },
                                   child: AnimatedContainer(
                                       alignment: Alignment.center,

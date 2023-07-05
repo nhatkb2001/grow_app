@@ -1,8 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 import 'package:grow_app/models/taskModel.dart';
 import 'package:grow_app/models/userModel.dart';
@@ -12,17 +10,12 @@ import 'package:grow_app/views/task/taskDetail.dart';
 import 'package:iconsax/iconsax.dart';
 
 //import widgets
-import 'package:grow_app/views/widget/dialogWidget.dart';
 
 //import constants
 import 'package:grow_app/constants/colors.dart';
-import 'package:grow_app/constants/fonts.dart';
-import 'package:grow_app/constants/images.dart';
-import 'package:grow_app/constants/icons.dart';
 import 'package:grow_app/constants/others.dart';
 
 //import others
-import 'package:blur/blur.dart';
 import 'package:intl/intl.dart';
 import 'package:meta/meta.dart';
 import 'package:custom_check_box/custom_check_box.dart';

@@ -1,6 +1,4 @@
 // import firebase
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'dart:ffi';
 
 class UserModel {
   final String userId;

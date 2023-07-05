@@ -1,21 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart';
 
 //import constants
 import 'package:grow_app/constants/colors.dart';
-import 'package:grow_app/constants/fonts.dart';
 import 'package:grow_app/constants/images.dart';
-import 'package:grow_app/constants/icons.dart';
 import 'package:grow_app/constants/others.dart';
 import 'package:grow_app/models/projectModel.dart';
 import 'package:grow_app/models/taskModel.dart';
 import 'package:grow_app/models/userModel.dart';
 
 //import widgets
-import 'package:grow_app/views/widget/dialogWidget.dart';
 
 //import views
-import 'package:grow_app/views/project/projectManagement.dart';
 import 'package:grow_app/views/project/circleProgressProject.dart';
 import 'package:grow_app/views/project/projectEditing.dart';
 import 'package:grow_app/views/task/taskCreating.dart';

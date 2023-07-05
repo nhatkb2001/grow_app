@@ -1,24 +1,17 @@
-import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart';
 
 //import constants
 import 'package:grow_app/constants/colors.dart';
 import 'package:grow_app/constants/fonts.dart';
-import 'package:grow_app/constants/images.dart';
-import 'package:grow_app/constants/icons.dart';
 import 'package:grow_app/constants/others.dart';
 
 //import firebase
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:grow_app/models/contentModel.dart';
-import 'package:grow_app/models/messageModel.dart';
 
 import 'package:grow_app/models/userModel.dart';
-import 'package:grow_app/views/profile/notificationCenter.dart';
-import 'package:grow_app/views/profile/profileCenter.dart';
 import 'package:intl/intl.dart';
 
 //import others

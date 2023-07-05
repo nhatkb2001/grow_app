@@ -1,7 +1,6 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:grow_app/models/userModel.dart';
 
 //import widgets
@@ -9,10 +8,7 @@ import 'package:grow_app/views/widget/dialogWidget.dart';
 
 //import constants
 import 'package:grow_app/constants/colors.dart';
-import 'package:grow_app/constants/fonts.dart';
 import 'package:grow_app/constants/images.dart';
-import 'package:grow_app/constants/icons.dart';
-import 'package:grow_app/constants/others.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:async';
 

@@ -1,6 +1,3 @@
-import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 //images used in this app
 const backgroundBasic = 'assets/images/background/backgroundBasic.png';

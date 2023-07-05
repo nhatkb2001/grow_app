@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart';
 
 //import views
 import 'package:grow_app/views/wrapper/onboardingWrapper.dart';
@@ -9,7 +8,6 @@ import 'package:grow_app/views/wrapper/authenticationWrapper.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 //import provider - state management
-import 'package:provider/provider.dart';
 
 //import others
 import 'package:shared_preferences/shared_preferences.dart';
@@ -30,30 +28,22 @@ Future<void> main() async {
 class GrowApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return  MaterialApp(
-        title: 'Grow',
-        debugShowCheckedModeBanner: false,
-        localizationsDelegates: [
-          GlobalMaterialLocalizations.delegate,
-          GlobalWidgetsLocalizations.delegate,
-        ],
-        supportedLocales: [
-          const Locale('en', 'US'), // English
-          // const Locale('vn', 'VN'), // VietNam
-        ],
-        theme: ThemeData(
-          scaffoldBackgroundColor: Colors.white,
-          dialogBackgroundColor: Colors.white,
-          primarySwatch: Colors.grey,
-          cardColor: Colors.white70,
-          accentColor: Colors.white,
-        ),
-        initialRoute:
-            initScreen == 0 || initScreen == null ? 'onboarding' : 'auth',
-        routes: {
-          'onboarding': (context) => onboardingWrapper(),
-          'auth': (context) => authenticationWrapper(),
-        },
+    return MaterialApp(
+      title: 'Grow',
+      debugShowCheckedModeBanner: false,
+      localizationsDelegates: [
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+      ],
+      supportedLocales: [
+        const Locale('en', 'US'), // English
+        // const Locale('vn', 'VN'), // VietNam
+      ],
+      initialRoute: initScreen == 0 ? 'onboarding' : 'auth',
+      routes: {
+        'onboarding': (context) => onboardingWrapper(),
+        'auth': (context) => authenticationWrapper(),
+      },
     );
   }
 }

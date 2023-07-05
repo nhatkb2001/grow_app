@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart';
 
 //import views
 import 'package:grow_app/views/authentication/signIn.dart';
@@ -12,18 +11,15 @@ import 'package:grow_app/views/widget/snackBarWidget.dart';
 import 'package:grow_app/controllers/authController.dart';
 
 //import firebase
-import 'package:firebase_auth/firebase_auth.dart';
 
 //import constants
 import 'package:grow_app/constants/colors.dart';
 import 'package:grow_app/constants/fonts.dart';
 import 'package:grow_app/constants/images.dart';
 import 'package:grow_app/constants/icons.dart';
-import 'package:grow_app/constants/others.dart';
 
 //import others
 import 'package:flutter/services.dart';
-import 'package:blur/blur.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:custom_check_box/custom_check_box.dart';
 
@@ -102,7 +98,6 @@ class _signUpPageState extends State<signupScreen> with InputValidationMixin {
                         child: Column(
                           children: [
                             Form(
-                                autovalidate: true,
                                 key: _formEmailKey,
                                 child: Stack(
                                   children: [
@@ -156,16 +151,14 @@ class _signUpPageState extends State<signupScreen> with InputValidationMixin {
                                       //validator
                                       validator: (email) {
                                         if (isEmailValid(email.toString())) {
-                                          WidgetsBinding.instance!
-                                              .addPostFrameCallback((_) {
+                                          WidgetsBinding.instance.addPostFrameCallback((_) {
                                             setState(() {
                                               notiColorEmail = green;
                                             });
                                           });
                                           return null;
                                         } else {
-                                          WidgetsBinding.instance!
-                                              .addPostFrameCallback((_) {
+                                          WidgetsBinding.instance.addPostFrameCallback((_) {
                                             setState(() {
                                               notiColorEmail = red;
                                             });
@@ -178,7 +171,6 @@ class _signUpPageState extends State<signupScreen> with InputValidationMixin {
                                 )),
                             SizedBox(height: 20),
                             Form(
-                                autovalidate: true,
                                 key: _formNameKey,
                                 child: Stack(
                                   children: [
@@ -232,16 +224,14 @@ class _signUpPageState extends State<signupScreen> with InputValidationMixin {
                                       //validator
                                       validator: (name) {
                                         if (isNameValid(name.toString())) {
-                                          WidgetsBinding.instance!
-                                              .addPostFrameCallback((_) {
+                                          WidgetsBinding.instance.addPostFrameCallback((_) {
                                             setState(() {
                                               notiColorName = green;
                                             });
                                           });
                                           return null;
                                         } else {
-                                          WidgetsBinding.instance!
-                                              .addPostFrameCallback((_) {
+                                          WidgetsBinding.instance.addPostFrameCallback((_) {
                                             setState(() {
                                               notiColorName = red;
                                             });
@@ -299,7 +289,6 @@ class _signUpPageState extends State<signupScreen> with InputValidationMixin {
                             // ),
                             SizedBox(height: 20),
                             Form(
-                                autovalidate: true,
                                 key: _formPhoneNumberKey,
                                 child: Stack(
                                   children: [
@@ -357,16 +346,14 @@ class _signUpPageState extends State<signupScreen> with InputValidationMixin {
                                       validator: (phoneNumber) {
                                         if (isPhoneNumberValid(
                                             phoneNumber.toString())) {
-                                          WidgetsBinding.instance!
-                                              .addPostFrameCallback((_) {
+                                          WidgetsBinding.instance.addPostFrameCallback((_) {
                                             setState(() {
                                               notiColorPhoneNumber = green;
                                             });
                                           });
                                           return null;
                                         } else {
-                                          WidgetsBinding.instance!
-                                              .addPostFrameCallback((_) {
+                                          WidgetsBinding.instance.addPostFrameCallback((_) {
                                             setState(() {
                                               notiColorPhoneNumber = red;
                                             });
@@ -430,7 +417,6 @@ class _signUpPageState extends State<signupScreen> with InputValidationMixin {
                                 Container(
                                   width: 248,
                                   child: Form(
-                                    autovalidate: true,
                                     key: _formPasswordKey,
                                     child: TextFormField(
                                       controller: passwordController,
@@ -533,16 +519,14 @@ class _signUpPageState extends State<signupScreen> with InputValidationMixin {
                                       validator: (password) {
                                         if (isPasswordValid(
                                             password.toString())) {
-                                          WidgetsBinding.instance!
-                                              .addPostFrameCallback((_) {
+                                          WidgetsBinding.instance.addPostFrameCallback((_) {
                                             setState(() {
                                               notiColorPassword = green;
                                             });
                                           });
                                           return null;
                                         } else {
-                                          WidgetsBinding.instance!
-                                              .addPostFrameCallback((_) {
+                                          WidgetsBinding.instance.addPostFrameCallback((_) {
                                             setState(() {
                                               notiColorPassword = red;
                                             });
