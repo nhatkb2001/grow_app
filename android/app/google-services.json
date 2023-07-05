@@ -1,0 +1,63 @@
+{
+  "project_info": {
+    "project_number": "46328400276",
+    "project_id": "grow-app-a7bf1",
+    "storage_bucket": "grow-app-a7bf1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:46328400276:android:b4a0fbf8864883e34ba781",
+        "android_client_info": {
+          "package_name": "com.example.project_management_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "46328400276-2u8cp47gqfotvnfonb9ktf54fj1q2bcg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.project_management_app",
+            "certificate_hash": "b74bedf2f0d669cd5403bb6758d0b9f4e8ea2d5d"
+          }
+        },
+        {
+          "client_id": "46328400276-vmdk2k0s7mtm6sshecovvvi0bgs1ncmm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.project_management_app",
+            "certificate_hash": "25011cd2d067fede020b198e9ab98edb3e6e3d3b"
+          }
+        },
+        {
+          "client_id": "46328400276-doevet6q7m54nslllukg2ik640m4anc9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD66pvExNDe7i1bnn0sbKD25VOomgkID2M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "46328400276-doevet6q7m54nslllukg2ik640m4anc9.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "46328400276-oqa49sn8c4040dgjq7ehcso5ict3mktu.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.projectManagementApp",
+                "app_store_id": "01112021"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
